@@ -4,13 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LabelBack"
+        xmlns:purposeoflife="clr-namespace:LabelBack.Converters"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <local:ContentToColorConverter x:Key="ContentToColorConverter"/>
+        <purposeoflife:AnotherConverter x:Key="ContentTo42"/>
     </Window.Resources>
     <StackPanel>
         <Label Content="Failed" Background="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource ResourceKey=ContentToColorConverter}}"/>
         <Label Content="Succeeded"  Background="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource ResourceKey=ContentToColorConverter}}"/>
+        <Label x:Name="srcLabel" Content="world"/>
+        <Label x:Name="srcLabel2"  Content="{Binding ElementName=srcLabel, Path=Content, Converter={StaticResource ContentTo42}}"/>
+        <Label Content="{Binding ElementName=srcLabel2, Path=Content, Converter={StaticResource ContentTo42}}"/>
     </StackPanel>
 </Window>
