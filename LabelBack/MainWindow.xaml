@@ -12,7 +12,9 @@
         <purposeoflife:AnotherConverter x:Key="ContentTo42"/>
     </Window.Resources>
     <StackPanel>
-        <Label Content="Failed" Background="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource ResourceKey=ContentToColorConverter}}"/>
+        <Button Content="Roll label content" Command="{Binding RollContentCommand}" Width="120" HorizontalAlignment="Left"/>
+        <Label Content="{Binding LabelContent, UpdateSourceTrigger=PropertyChanged}" Background="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource ResourceKey=ContentToColorConverter}}" Width="150" HorizontalAlignment="Left"/>
+        <TextBlock Text="From here comes the original content" Margin="0,50,0,0"/>
         <Label Content="Succeeded"  Background="{Binding RelativeSource={RelativeSource Self}, Path=Content, Converter={StaticResource ResourceKey=ContentToColorConverter}}"/>
         <Label x:Name="srcLabel" Content="world"/>
         <Label x:Name="srcLabel2"  Content="{Binding ElementName=srcLabel, Path=Content, Converter={StaticResource ContentTo42}}"/>

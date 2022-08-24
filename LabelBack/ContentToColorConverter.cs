@@ -9,7 +9,7 @@ namespace LabelBack
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value.ToString() == "Failed") return Brushes.LightCoral;
+            if (value?.ToString() == "Failed") return Brushes.LightCoral;
             return Brushes.LightGreen;
         }
 
