@@ -10,6 +10,7 @@
     <Window.Resources>
         <local:ContentToColorConverter x:Key="ContentToColorConverter"/>
         <purposeoflife:AnotherConverter x:Key="ContentTo42"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
     <StackPanel>
         <Button Content="Roll label content" Command="{Binding RollContentCommand}" Width="120" HorizontalAlignment="Left"/>
@@ -19,5 +20,13 @@
         <Label x:Name="srcLabel" Content="world"/>
         <Label x:Name="srcLabel2"  Content="{Binding ElementName=srcLabel, Path=Content, Converter={StaticResource ContentTo42}}"/>
         <Label Content="{Binding ElementName=srcLabel2, Path=Content, Converter={StaticResource ContentTo42}}"/>
+        <Button Content="Switch tab control visibility" Command="{Binding SwitchTabItem1VisibilityCommand}"/>
+        <TabControl>
+            <TabItem Header="Tabitem 1" Visibility="{Binding TabItem1Visibility, Converter={StaticResource BoolToVisibilityConverter}}"/>
+            <TabItem Header="Tabitem 2" />
+            <TabItem Header="Tabitem 3" />
+        </TabControl>
+
+
     </StackPanel>
 </Window>
